@@ -9,23 +9,20 @@
 * Contributing
     * Code Style
     * Testing
-* TODO
 
 ## About
 This project is the API that powers the Reokr web app.
 
 ### Resources
 #### Environments
-[Develop Environment]()
+[Develop Environment](https://reokr-dev.herokuapp.com/)
 
-[Staging Environment]()
+[Staging Environment](https://reokr-staging.herokuapp.com/)
 
-[Production Environment]()
+[Production Environment](https://reokr.herokuapp.com/)
 
 #### Other Links
-[Heroku](https://heroku.com)
-
-[LogDNA]()
+[LogDNA](https://app.logdna.com/cd1986cee4/logs/view)
 
 
 ## Getting Started
