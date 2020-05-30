@@ -38,8 +38,8 @@ Create the local `.env` file and specify any sensitive credentials or other envi
 (non-sensitive) environment variables.
 
 ```
-APP_DOMAIN=reokr.com
-MAILCATCHER_IP=172.21.0.1
+APP_DOMAIN=localhost:3000
+AUTH_REDIRECT_URL=http://localhost:3000
 THOR_MERGE=vim
 ```
 

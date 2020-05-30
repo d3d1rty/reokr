@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -29,7 +31,8 @@ Rails.application.configure do
   config.action_mailer.perform_caching = true
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.default_url_options = { host: ENV['APP_DOMAIN'] }
-  config.action_mailer.smtp_settings = { address: ENV['MAILCATCHER_IP'], port: 1025 }
+  config.action_mailer.default_options = { from: "noreply@#{ENV['APP_DOMAIN']}" }
+  config.action_mailer.smtp_settings = { address: 'mailcatcher', port: 1025 }
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
