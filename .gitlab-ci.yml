@@ -1,0 +1,19 @@
+image: ruby:2.7.1
+
+services:
+  - postgres:latest
+
+variables:
+  POSTGRES_DB: test_db
+  POSTGRES_USER: runner
+  POSTGRES_PASSWORD: "password"
+
+tests:
+  stage: test
+  script:
+    - apt-get update -qy
+    - gem install bundler -v 2.0.1
+    - bundle install --without postgres production --jobs $(nproc) "${FLAGS[@]}"
+    - cp config/gitlab-database.yml config/database.yml
+    - RAILS_ENV=test bundle exec rails db:create db:schema:load
+    - bundle exec rspec

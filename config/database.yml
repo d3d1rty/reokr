@@ -1,0 +1,22 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  host: db
+  username: postgres
+  password:
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  timeout: 5000
+
+development:
+  <<: *default
+  database: reokr_development
+
+test:
+  <<: *default
+  database: reokr_test
+
+production:
+  <<: *default
+  database: reokr_production
+  username: me
+  password: <%= ENV['REOKR_DATABASE_PASSWORD'] %>

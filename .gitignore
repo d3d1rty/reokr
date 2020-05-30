@@ -1,0 +1,8 @@
+/log/*
+/tmp/*
+!/log/.keep
+!/tmp/.keep
+.byebug_history
+/config/master.key
+/vendor
+.env
