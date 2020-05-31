@@ -5,21 +5,23 @@
     * Resources
 * Getting started
     * Installation
-    * Usage
+    * Scripts
+    * Mail
 * Contributing
     * Code Style
     * Testing
+    * Deployment
 
 ## About
 This project is the API that powers the Reokr web app.
 
 ### Resources
 #### Environments
-[Develop Environment](https://reokr-dev.herokuapp.com/)
+[Dev](https://reokr-dev.herokuapp.com/)
 
-[Staging Environment](https://reokr-staging.herokuapp.com/)
+[Staging](https://reokr-staging.herokuapp.com/)
 
-[Production Environment](https://reokr.herokuapp.com/)
+[Production](https://reokr.herokuapp.com/)
 
 #### Other Links
 [LogDNA](https://app.logdna.com/cd1986cee4/logs/view)
@@ -71,6 +73,41 @@ Start the server.
 docker-compose up
 ```
 
+### Scripts
+Scripts are built and used to test the API and create resources within the API. To run a script, execute command:
+
+```
+docker-compose exec web bundle exec rails runner scripts/[SCRIPT FILENAME]
+```
+
+### Mail
+This application uses Mailcatcher for local development and Mailcatcher in the dev and staging environments. You
+can access the Mailcatcher inbox by visiting [http://127.0.0.1:1080/](http://127.0.0.1:1080) in your browser. To
+access the Mailtrap inboxes, you will need to click the Mailtrap integration from the app in the Heroku dashboard.
+
+## Contributing
+### Code Style
+For ruby, we use Rubocop to enforce code style and Reek to find code smells.
+To manually run `rubocop`, you can run the following commands:
+
+```
+# Run rubocop for the entire project
+docker-compose exec web bundle exec rubocop
+# Run rubocop for a specific file
+docker-compose exec web bundle exec rubocop foo/bar.rb
+```
+
+To manually run `reek`, you can execute:
+```
+docker-compose exec web bundle exec reek
+```
+
+### Testing
+The test suite is executed on every commit to GitLab, and it can be run manually on your local machine:
+```
+docker-compose exec web bundle exec rspec
+```
+
 ### Deployment
 To deploy, you will need the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli#download-and-install) utility
 installed as well as access to the app instances.
@@ -95,27 +132,4 @@ for acceptance testing. Changes should be promoted to production via the pipelin
 after acceptance testing has passed.
 ```
 git push heroku-staging master
-```
-
-## Contributing
-### Code Style
-For ruby, we use Rubocop to enforce code style and Reek to find code smells.
-To manually run `rubocop`, you can run the following commands:
-
-```
-# Run rubocop for the entire project
-docker-compose exec web bundle exec rubocop
-# Run rubocop for a specific file
-docker-compose exec web bundle exec rubocop foo/bar.rb
-```
-
-To manually run `reek`, you can execute:
-```
-docker-compose exec web bundle exec reek
-```
-
-### Testing
-The test suite is executed on every commit to GitLab, and it can be run manually on your local machine:
-```
-docker-compose exec web bundle exec rspec
 ```
