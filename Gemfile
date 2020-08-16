@@ -7,6 +7,7 @@ ruby '2.7.1'
 
 gem 'bootsnap', require: false
 gem 'devise_token_auth'
+gem 'graphql'
 gem 'pg'
 gem 'puma'
 gem 'rack-cors'

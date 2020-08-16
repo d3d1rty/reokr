@@ -3,7 +3,6 @@
 require 'net/http'
 require 'uri'
 require 'json'
-require 'faker'
 require_relative 'script_helpers/script_helpers'
 
 include ScriptHelpers
@@ -15,7 +14,7 @@ selection = get_env_selection
 env_url = base_url_for_env(selection)
 
 # User ID for operation
-puts 'User ID to update?'
+puts 'User ID for login?'
 user_id = gets.chomp
 
 # Authenticate user
@@ -35,23 +34,15 @@ req_options = {
 }
 
 request.body = JSON.dump({
-  "query": "mutation {
-    updateUser(
-      input: {
-        id: #{user_id}
-        firstName: \"#{Faker::Name.first_name}\"
-      }
-    ){
-      errors
-      user {
-        id
-        email
-        firstName
-        lastName
-        username
-        imageUrl
-        bio
-      }
+  "query": "query {
+    allUsers {
+      id
+      email
+      firstName
+      lastName
+      username
+      imageUrl
+      bio
     }
   }"
 })

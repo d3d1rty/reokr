@@ -50,48 +50,4 @@ describe User, type: :model do
     it { should have_db_index :unlock_token}
     it { should have_db_index :username }
   end
-
-  describe 'public_fields' do
-    let(:user) { create(:user) }
-
-    it 'should return a hash' do
-      expect(user.public_fields).to be_a(Hash)
-    end
-
-    it 'should not return sensitive data' do
-      expect(user.public_fields.keys).not_to include(*User.private_field_names)
-    end
-
-    it 'should return publicly accessible data' do
-      expect(user.public_fields.keys).to include(*User.public_field_names)
-    end
-  end
-
-  describe 'public_field_names' do
-    let(:user) { create(:user) }
-
-    it 'should return an array' do
-      expect(User.public_field_names).to be_a(Array)
-    end
-
-    it 'should not list private field names' do
-      expect(User.public_field_names).not_to include(*User.private_field_names)
-    end
-
-    it 'should only list public field names' do
-      expect(User.public_field_names).to include(*user.public_fields.keys)
-    end
-  end
-
-  describe 'private_field_names' do
-    let(:user) { create(:user) }
-
-    it 'should return an array' do
-      expect(User.private_field_names).to be_a(Array)
-    end
-
-    it 'should not list public field names' do
-      expect(User.private_field_names).to_not include(*user.public_fields.keys)
-    end
-  end
 end

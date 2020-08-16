@@ -90,6 +90,7 @@ GEM
     ffi (1.12.2)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
+    graphql (1.10.10)
     http-accept (1.7.0)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
@@ -250,6 +251,7 @@ DEPENDENCIES
   devise_token_auth
   factory_bot_rails
   faker
+  graphql
   listen
   pg
   pry-byebug
